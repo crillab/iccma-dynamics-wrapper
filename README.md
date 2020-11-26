@@ -19,7 +19,7 @@ Given a dynamic framework with `n` attacks in the dynamics file, solvers were in
 4. and so on...
 
 Dynamics tracks were designed to reflect situations in which new arguments are added (e.g. in a debate), for which we have no idea which arguments and attacks will be added or removed.
-However, some solvers took advantage of having the full list of modifications in their algorithm.
+However, having a full list of modifications before any calculation is not realistic in application of dynamic argumentation. Moreover, some solvers could take advantage of having the full list of modifications in their algorithm.
 This program prevents this behavior.
 
 ## How does it work
