@@ -31,7 +31,7 @@ lazy_static! {
     static ref ACCEPTANCE_STATUS_LINE_PATTERN: Regex = Regex::new(r"^\s*([^\s]+)\s*$").unwrap();
     static ref EXTENSION_COUNT_LINE_PATTERN: Regex = Regex::new(r"^\s*(\d+)\s*$").unwrap();
     static ref EXTENSION_LINE_PATTERN: Regex = Regex::new(&format!(
-        r"^\s*\[\s*({}(,\s{})*)?\]\s*$",
+        r"^\s*\[\s*({}(,\s*{})*)?\]\s*$",
         ARG_AND_SPACE_PATTERN, ARG_AND_SPACE_PATTERN
     ))
     .unwrap();
@@ -337,6 +337,22 @@ mod tests {
     #[test]
     fn test_extension_line_two_args() {
         let answer = "[a0, a1]";
+        let extension = read_extension(&mut answer.as_bytes()).unwrap();
+        assert_eq!(
+            ["a0", "a1"]
+                .iter()
+                .map(|a| a.to_string())
+                .collect::<Vec<String>>(),
+            extension
+                .iter()
+                .map(|a| a.label().to_string())
+                .collect::<Vec<String>>()
+        );
+    }
+
+    #[test]
+    fn test_extension_line_two_args_no_spaces() {
+        let answer = "[a0,a1]";
         let extension = read_extension(&mut answer.as_bytes()).unwrap();
         assert_eq!(
             ["a0", "a1"]
