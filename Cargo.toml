@@ -1,0 +1,15 @@
+[package]
+name = "iccma21-dynamics-wrapper"
+version = "0.1.0"
+license = "GPL-3.0-only"
+authors = ["Lonca Emmanuel <emmanuel.lonca@cril.fr>"]
+edition = "2018"
+categories=["science"]
+keywords = ["argumentation", "abstract"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.34"
+crusti_app_helper = { path = "local_crates/crusti_app_helper-v0.1/" }
+crusti_arg = { path = "local_crates/crusti_arg-v0.3-alpha/" }
